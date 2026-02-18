@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prayer Times</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="top">
+      <div class="clock" id="current-time">00:00</div>
+      <div class="date" id="current-date">Monday 1st January</div>
+      <div class="date" id="arabic-date">Muharram 1, 1447</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="prayers">
+      <div class="prayer-header-row">
+        <div class="prayer-name"></div>
+        <div class="prayer-time">START</div>
+        <div class="prayer-time">JAMAT</div>
+      </div>
+      <div class="prayer-row">
+        <div class="prayer-name">FAJR</div>
+        <div class="prayer-time" id="fajr-start">00:00</div>
+        <div class="jamat-time" id="fajr-jamat">00:00</div>
+      </div>
+      <div class="prayer-row">
+        <div class="prayer-name">SUNRISE</div>
+        <div class="prayer-time" id="sunrise-start">00:00</div>
+        <div class="jamat-time">-</div>
+      </div>
+      <div class="prayer-row">
+        <div class="prayer-name" id="dhuhr-label">DHUHR</div>
+        <div class="prayer-time" id="dhuhr-start">00:00</div>
+        <div class="jamat-time" id="dhuhr-jamat">00:00</div>
+      </div>
+      <div class="prayer-row">
+        <div class="prayer-name">ASR</div>
+        <div class="prayer-time" id="asr-start">00:00</div>
+        <div class="jamat-time" id="asr-jamat">00:00</div>
+      </div>
+      <div class="prayer-row">
+        <div class="prayer-name">MAGHRIB</div>
+        <div class="prayer-time" id="maghrib-start">00:00</div>
+        <div class="jamat-time" id="maghrib-jamat">00:00</div>
+      </div>
+      <div class="prayer-row">
+        <div class="prayer-name">ISHA</div>
+        <div class="prayer-time" id="isha-start">00:00</div>
+        <div class="jamat-time" id="isha-jamat">00:00</div>
+      </div>
+      <div class="prayer-row">
+        <div class="prayer-name">JUMUAH</div>
+        <div class="prayer-time">-</div>
+        <div class="jamat-time" id="jumuah-jamat">00:00</div>
+      </div>
+    </div>
+
+    <div class="dhikr-section">
+      <div class="dhikr-title">DHIKR MAJLIS</div>
+      <div class="dhikr-columns">
+        <div class="dhikr-col">
+          <div class="dhikr-label">MORNING</div>
+          <div class="dhikr-time" id="dhikr-morning">-</div>
+        </div>
+        <div class="dhikr-col">
+          <div class="dhikr-label">EVENING</div>
+          <div class="dhikr-time" id="dhikr-evening">-</div>
+        </div>
+        <div class="dhikr-col">
+          <div class="dhikr-label">NIGHT</div>
+          <div class="dhikr-time" id="dhikr-night">-</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <div id="poster-overlay" style="display: none;">
+    <img src="" alt="Poster" class="poster-img">
+  </div>
+
+  <div id="makrooh-overlay" style="display: none;">
+    <div class="makrooh-background flashing-bg">
+      <img src="posters/makrooh-bg.png" alt="Makrooh Background" class="makrooh-bg-img">
+    </div>
+    <img src="posters/makrooh-text.png" alt="Makrooh Text" class="makrooh-text-img">
+  </div>
+
+  <script src="https://unpkg.com/@umalqura/core@0.0.7/dist/umalqura.min.js"></script>
+  <script>
+    const timestamp = Date.now();
+
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = `style.css?t=${timestamp}`;
+    document.head.appendChild(css);
+
+    const js = document.createElement('script');
+    js.src = `script.js?t=${timestamp}`;
+      js.onload = () => {
+      if (typeof initPrayerTimes === 'function') {
+        initPrayerTimes();
+      }
+    };
+    document.body.appendChild(js);
+  </script>
+  
+</body>
+</html>
