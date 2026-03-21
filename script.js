@@ -225,7 +225,7 @@ function initPrayerTimes() {
       .catch(err => console.error("Dhikr fetch error:", err));
   }
 
-  const MAX_POSTERS = 8;
+  const MAX_POSTERS = 10;
   let posterImages = [];
   let posterIndex = 0;
 
@@ -298,7 +298,7 @@ function initPrayerTimes() {
         overlay.style.display = 'none';
         posterIndex++;
       }, 1500);
-    }, 10000);
+    }, 20000);
   }
   
   let posterCycleInterval = null;
