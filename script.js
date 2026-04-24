@@ -30,7 +30,8 @@ function initPrayerTimes() {
     else if (day === 3 || day === 23) suffix = 'rd';
   
     const formattedDate = `${weekday} ${day}${suffix} ${month}`;
-    var nowH = umalqura();
+    // var nowH = umalqura();
+    var nowH = umalqura().subtract(1, 'day');
     document.getElementById('current-date').textContent = formattedDate.toUpperCase();
     document.getElementById('arabic-date').textContent = nowH.format('d MMMM yyyy').toUpperCase() + ' AH';
   }
