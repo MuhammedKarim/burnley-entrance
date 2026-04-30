@@ -8,15 +8,15 @@ body {
   width: 100vw;
   color: white;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: flex-start;
   cursor: none;
 }
 
 .container {
   width: 90vw;
-  max-width: 80vw;
-  margin-top: 15vh;
+  max-width: 75vw;
+  margin: 4vh 0 0 11.5vw;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -27,11 +27,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5vh;
+  margin: 4vh auto 1vh 15vw;
 }
 
 .clock {
-  font-size: 7vh;
+  font-size: 9vh;
   font-weight: bold;
+  margin: 1vh auto;
 }
 
 .date {
@@ -39,7 +41,7 @@ body {
 }
 
 .divider {
-  margin:0.25vh auto;
+  margin: 0 auto 1vh 12.4vw;
   width: 70%;
   height: 0.3vh;
   background-color: white;
@@ -54,7 +56,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1vh 1vw;
+  padding: 1vh 1vw 1vh 0;
   font-weight: bold;
 }
 
@@ -93,6 +95,7 @@ body {
 .prayer-header-row .prayer-time {
   flex: 1;
   text-align: center;
+  font-size: 3vh;
 }
 
 .countdown {
@@ -111,8 +114,8 @@ body {
 
 .dhikr-section {
   position: absolute;
-  left: 50%;
-  bottom: 4vh;
+  left: 53%;
+  bottom: 4.5vh;
   transform: translateX(-50%);
   width: 80vw;
   display: flex;
