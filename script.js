@@ -221,7 +221,7 @@ function initPrayerTimes() {
         if (!dhikrData) return;
         document.getElementById("dhikr-morning").textContent = formatTo12Hour(getDisplayTime("morning")) || "-";
         document.getElementById("dhikr-evening").textContent = formatTo12Hour(getDisplayTime("evening")) || "-";
-        // document.getElementById("dhikr-night").textContent =  formatTo12Hour(getDisplayTime("night")) || "-";
+        document.getElementById("dhikr-night").textContent =  formatTo12Hour(getDisplayTime("night")) || "-";
       })
       .catch(err => console.error("Dhikr fetch error:", err));
   }
