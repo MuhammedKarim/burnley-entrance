@@ -30,9 +30,37 @@ function initPrayerTimes() {
     else if (day === 3 || day === 23) suffix = 'rd';
   
     const formattedDate = `${weekday} ${day}${suffix} ${month}`;
-    var nowH = umalqura();
     document.getElementById('current-date').textContent = formattedDate.toUpperCase();
+    var nowH = getHijriDateForDisplay();
     document.getElementById('arabic-date').textContent = nowH.format('d MMMM yyyy').toUpperCase() + ' AH';
+  }
+  
+  function getHijriDateForDisplay() {
+    const now = new Date();
+    const { todayStr } = getTodayTomorrowStr();
+
+    const maghribStr = allData[todayStr]?.maghrib?.start;
+
+    if (!maghribStr) return umalqura(now);
+
+    const [h, m] = maghribStr.split(':').map(Number);
+    const maghribTime = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      h,
+      m,
+      0,
+      0
+    );
+
+    if (now >= maghribTime) {
+      const islamicTomorrow = new Date(now);
+      islamicTomorrow.setDate(now.getDate() + 1);
+      return umalqura(islamicTomorrow);
+    }
+
+    return umalqura(now);
   }
   
   function isJumuahPeriod(todayStr) {
@@ -398,6 +426,7 @@ function initPrayerTimes() {
       .then(data => {
         allData = data;
         loadPrayerTimes();
+        updateClock();
       });
   }
     
