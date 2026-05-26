@@ -240,15 +240,43 @@ function initPrayerTimes() {
     return todayVal;
   }
 
+  function hasDhikrNight() {
+    if (!dhikrData) return false;
+
+    const todayNight = dhikrData.today?.night;
+    const tomorrowNight = dhikrData.tomorrow?.night;
+
+    return Boolean(todayNight || tomorrowNight);
+  }
+
+  function updateDhikrNightLayout() {
+    const dhikrSection = document.querySelector(".dhikr-section");
+    const nightCol = document.getElementById("dhikr-night-col");
+    const nightTime = document.getElementById("dhikr-night");
+
+    if (!dhikrSection || !nightCol || !nightTime) return;
+
+    const showNight = hasDhikrNight();
+
+    dhikrSection.classList.toggle("has-night", showNight);
+    nightCol.style.display = showNight ? "" : "none";
+
+    if (showNight) {
+      nightTime.textContent = formatTo12Hour(getDisplayTime("night")) || "-";
+    }
+  }
+
   function checkDhikr() {
     fetch('https://sufi.org.uk/live-dzp', { cache: "no-store" })
       .then(res => res.json())
       .then(status => {
         dhikrData = status;
         if (!dhikrData) return;
+
         document.getElementById("dhikr-morning").textContent = formatTo12Hour(getDisplayTime("morning")) || "-";
         document.getElementById("dhikr-evening").textContent = formatTo12Hour(getDisplayTime("evening")) || "-";
-        // document.getElementById("dhikr-night").textContent =  formatTo12Hour(getDisplayTime("night")) || "-";
+
+        updateDhikrNightLayout();
       })
       .catch(err => console.error("Dhikr fetch error:", err));
   }

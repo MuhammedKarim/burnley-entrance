@@ -150,6 +150,24 @@ body {
   font-size: 3.3vh;
 }
 
+/* NIGHT ZIKR */
+.dhikr-section.has-night {
+  bottom: 5vh;
+}
+
+.dhikr-section.has-night .dhikr-title {
+  flex: 1;
+  font-size: 2.8vh;
+}
+
+.dhikr-section.has-night .dhikr-label {
+  font-size: 2vh;
+}
+
+.dhikr-section.has-night .dhikr-time {
+  font-size: 3vh;
+}
+
 #makrooh-overlay {
   position: fixed;
   top: 0;
