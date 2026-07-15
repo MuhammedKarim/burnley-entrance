@@ -35,32 +35,38 @@ function initPrayerTimes() {
     document.getElementById('arabic-date').textContent = nowH.format('d MMMM yyyy').toUpperCase() + ' AH';
   }
   
+  const HIJRI_DATE_OFFSET_DAYS = -1;
   function getHijriDateForDisplay() {
     const now = new Date();
     const { todayStr } = getTodayTomorrowStr();
 
     const maghribStr = allData[todayStr]?.maghrib?.start;
 
-    if (!maghribStr) return umalqura(now);
+    let hijriDisplayDate = new Date(now);
 
-    const [h, m] = maghribStr.split(':').map(Number);
-    const maghribTime = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate(),
-      h,
-      m,
-      0,
-      0
-    );
+    if (maghribStr) {
+      const [h, m] = maghribStr.split(':').map(Number);
 
-    if (now >= maghribTime) {
-      const islamicTomorrow = new Date(now);
-      islamicTomorrow.setDate(now.getDate() + 1);
-      return umalqura(islamicTomorrow);
+      const maghribTime = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        h,
+        m,
+        0,
+        0
+      );
+
+      if (now >= maghribTime) {
+        hijriDisplayDate.setDate(hijriDisplayDate.getDate() + 1);
+      }
     }
 
-    return umalqura(now);
+    hijriDisplayDate.setDate(
+      hijriDisplayDate.getDate() + HIJRI_DATE_OFFSET_DAYS
+    );
+
+    return umalqura(hijriDisplayDate);
   }
   
   function isJumuahPeriod(todayStr) {
