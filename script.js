@@ -35,7 +35,7 @@ function initPrayerTimes() {
     document.getElementById('arabic-date').textContent = nowH.format('d MMMM yyyy').toUpperCase() + ' AH';
   }
   
-  const HIJRI_DATE_OFFSET_DAYS = -1;
+  const HIJRI_DATE_OFFSET_DAYS = 0;
   function getHijriDateForDisplay() {
     const now = new Date();
     const { todayStr } = getTodayTomorrowStr();
