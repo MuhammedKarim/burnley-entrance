@@ -455,12 +455,15 @@ function initPrayerTimes() {
   }
 
   function fetchPrayerTimes() {
-    fetch(`prayer-times.json?t=${Date.now()}`)
+    fetch(`https://muhammedkarim.github.io/burnley-prayers/prayer-times.json?t=${Date.now()}`)
       .then(res => res.json())
       .then(data => {
         allData = data;
         loadPrayerTimes();
         updateClock();
+      })
+      .catch(error => {
+        console.error('Failed to fetch prayer times:', error);
       });
   }
     
