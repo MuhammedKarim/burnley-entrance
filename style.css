@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5vh;
+  gap: 0.3vh;
   margin: 0;
   text-align: center;
 }
@@ -44,7 +44,9 @@ body {
 }
 
 .date {
-  font-size: 2vh;
+  font-size: min(2.3vh, 3.4vw);
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .divider {
