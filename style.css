@@ -44,7 +44,7 @@ body {
 }
 
 .date {
-  font-size: min(2.3vh, 3.4vw);
+  font-size: min(2vh, 3vw);
   line-height: 1.2;
   white-space: nowrap;
 }
